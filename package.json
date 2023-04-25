@@ -9,13 +9,13 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/goitacademy/parcel-project-template.git"
+    "url": "git+https://github.com/jacobpavlik/goit-js-hw-08.git"
   },
   "keywords": [],
-  "author": "Alexander Repeta <alexander.repeta@gmail.com>",
+  "author": "Jakub Pawlik <pawlikrelations@gmail.com>",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": "https://github.com/jacobpavlik/goit-js-hw-08/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"
@@ -26,5 +26,12 @@
     "parcel-reporter-clean-dist": "^1.0.4",
     "posthtml-include": "^1.7.4"
   },
+  "contributors": [
+    {
+      "name": "Alexander Repeta",
+      "email": "alexander.repeta@gmail.com",
+      "url": "https://github.com/goitacademy/parcel-project-template.git"
+    }
+  ],
   "browserslist": "> 0.5%, last 2 versions, not dead"
 }
