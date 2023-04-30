@@ -32,7 +32,3 @@ player
         break;
     }
   });
-// poniżej kod chyba niepotrzebny, ale był w dokumentacji - upewnić się i skasować
-player.getVideoTitle().then(function (title) {
-  console.log('title:', title);
-});
