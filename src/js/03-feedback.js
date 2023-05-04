@@ -17,17 +17,11 @@ const loadObjFromLocalStorage = key => {
   }
 };
 
-// input.addEventListener('input', test);
-// const getEntryForm = key => document.querySelectorAll(`form[name="${key}"]`);
-// console.log(getEntryForm);
-// const getEntryForm = document.querySelectorAll(`form[name="${key}"]`);
 // działa
 // const getEntryInput = document.querySelector(`input[name="email"]`);
 
 const entryInput = document.querySelector('.feedback-form');
-console.log(`firstchild ${entryInput.firstElementChild}`);
 const button = document.querySelector('BUTTON');
-// console.log(button);
 
 function whenSubmit(event) {
   event.preventDefault();
@@ -38,33 +32,25 @@ function whenSubmit(event) {
   entryInput[1].value = '';
 }
 
-// function ifReloadPage() {
-//   if ((document.location.reload(true)) && ((localStorage.getItem("feedback-form-state") = null))) {
-//     entryInput[0].value = 'email';
-//     entryInput[1].value = 'message';
-//   } else {
-//     entryInput[0].value = '1';
-//     entryInput[1].value = '2';
-//   }
-// }
+function ifReloadPage() {
+  const savedData = loadObjFromLocalStorage('feedback-form-state');
 
-// net - sprawdzić - dziwnie działa -
-// if (window.PerformanceNavigationTiming) {
-//   console.info('window.performance works fine on this browser');
+  // if ((savedData = 'null')) {
+  //   entryInput[0].value = '';
+  //   entryInput[1].value = '';
+  // } else {
+  entryInput[0].value = savedData.email;
+  entryInput[1].value = savedData.message;
+}
 
-//   if (PerformanceNavigationTiming.type === 'reload') {
-//     console.info('This page is reloaded');
-//   } else {
-//     console.info('This page is not reloaded');
-//   }
-// }
-// net - koniec
+window.addEventListener('load', ifReloadPage);
+// window.addEventListener('load', () => {}); z wykładu -> sprawdzić
+
 button.addEventListener('click', whenSubmit);
 
 entryInput.addEventListener(
   'input',
-
-  event => {
+  throttle(event => {
     // event.preventDefault();
     console.log(`event target: ${event.target.value}`);
     console.log(
@@ -76,26 +62,11 @@ entryInput.addEventListener(
     const container = { email: email.value, message: message.value };
     console.log(container);
     saveObjToLocalStorage('feedback-form-state', container);
-  }
+  }),
+  500,
+  'trailing: false'
 );
 console.log(localStorage.getItem('feedback-form-state'));
 
 //throttle - wzór
 // throttle(function(), 500, ('trailing: false'));
-
-// poprzednie zadanie z event.target
-// const form = document.querySelector('.login-form');
-
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
-//   const {
-//     elements: { email, password },
-//   } = event.currentTarget;
-//   if (email.value && password.value) {
-//     const container = { email: email.value, password: password.value };
-//     console.log(container);
-//     form.reset();
-//   } else {
-//     alert('Oba pola muszą zostać wypełnione!');
-//   }
-// });
